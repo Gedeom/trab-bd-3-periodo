@@ -28,3 +28,7 @@ body {
 .main-footer {
     margin-top: auto;
 }
+
+th.dt-center, td.dt-center {
+    text-align: center !important;
+}

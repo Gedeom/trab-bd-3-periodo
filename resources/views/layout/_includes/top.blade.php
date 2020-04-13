@@ -217,6 +217,9 @@
         });
     </script>
     <style>
+        th.dt-center, td.dt-center {
+            text-align: center !important;
+        }
         header
         {
             height: 100px;
