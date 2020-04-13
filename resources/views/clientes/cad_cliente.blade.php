@@ -1,4 +1,5 @@
 @include('layout._includes.top')
+<title>Cliente</title>
 
 <main>
 

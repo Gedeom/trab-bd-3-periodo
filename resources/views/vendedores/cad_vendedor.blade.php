@@ -1,5 +1,5 @@
 @include('layout._includes.top')
-
+<title>Vendedor</title>
 <main>
 
     <div class="container">
