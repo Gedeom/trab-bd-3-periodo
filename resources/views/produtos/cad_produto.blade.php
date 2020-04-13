@@ -232,8 +232,11 @@
 
 
     function Editar(produto_id) {
-        let row = datatable.row(produto_id - 1).data();
-
+        let row = datatable
+            .rows( function ( idx, data, node ) {
+                return data.id === produto_id ?
+                    true : false;
+            } ).data()[0];
         $("#nome").val(row.nome).change();
         $('#categoria').append($('<option/>').val(row.categoria_id).text(row.categoria));
         $("#qnt_inicial").val(row.qnt_inicial);

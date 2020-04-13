@@ -337,8 +337,11 @@
     }
 
     function Editar(saida_id) {
-        let row = datatable.row(saida_id - 1).data();
-
+        let row = datatable
+            .rows( function ( idx, data, node ) {
+                return data.id === saida_id ?
+                    true : false;
+            } ).data()[0];
         $('#produto').append($('<option/>').val(row.produto_id).text(row.produto));
         $('#cliente').append($('<option/>').val(row.cliente_id).text(row.cliente));
         $('#vendedor').append($('<option/>').val(row.vendedor_id).text(row.vendedor));

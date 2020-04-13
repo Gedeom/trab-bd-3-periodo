@@ -202,7 +202,11 @@
 
 
     function Editar(cliente_id) {
-         let row = datatable.row(cliente_id - 1).data();
+         let row = datatable
+             .rows( function ( idx, data, node ) {
+                 return data.id === cliente_id ?
+                     true : false;
+             } ).data()[0];
 
          $('#pessoa').append($('<option/>').val(row.pessoa_id).text(row.nome + ' - ' + row.cpf_cnpj + ' - ' + row.dt_nascimento));
 

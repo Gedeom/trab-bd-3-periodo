@@ -237,8 +237,11 @@
 
 
     function Editar(entrada_id) {
-        let row = datatable.row(entrada_id - 1).data();
-
+        let row = datatable
+            .rows( function ( idx, data, node ) {
+                return data.id === entrada_id ?
+                    true : false;
+            } ).data()[0];
         $('#produto').append($('<option/>').val(row.produto_id).text(row.produto));
         $('#fornecedor').append($('<option/>').val(row.fornecedor_id).text(row.fornecedor));
         $('#qnt').val(row.qnt).change();

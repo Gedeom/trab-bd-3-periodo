@@ -134,8 +134,11 @@
 
 
     function Editar(categoria_id) {
-        let row = datatable.row(categoria_id - 1).data();
-
+        let row = datatable
+            .rows( function ( idx, data, node ) {
+                return data.id === categoria_id ?
+                    true : false;
+            } ).data()[0];
         $('#nome').val(row.nome).change();
 
         id_categoria = categoria_id;
