@@ -1,5 +1,6 @@
 @include('layout._includes.top')
 
+<title>GVBD - Estoque</title>
 <!--Main Layout-->
 <main>
 
