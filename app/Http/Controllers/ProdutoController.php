@@ -36,7 +36,16 @@ class ProdutoController extends Controller
         try {
             DB::beginTransaction();
 
-            Produto::find($produto_id)->delete();
+            $produto = Produto::find($produto_id);
+
+            if($produto->entradas()->count() > 0)
+                return response()->json(['message' => 'Produto tem entrada!', 'success' => false],422);
+
+            if($produto->saidas()->count() > 0)
+                return response()->json(['message' => 'Produto tem saida!', 'success' => false],422);
+
+            $produto->delete();
+
             DB::commit();
             return response()->json(['message' => 'Deletado com sucesso!', 'success' => true]);
         } catch (Exception $e) {

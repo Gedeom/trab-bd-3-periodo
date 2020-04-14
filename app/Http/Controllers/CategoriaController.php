@@ -27,7 +27,13 @@ class CategoriaController extends Controller
         try {
             DB::beginTransaction();
 
-            Categoria::find($categoria_id)->delete();
+            $categoria = Categoria::find($categoria_id);
+
+            if($categoria->produto()->count() > 0)
+                return response()->json(['message' => 'Categoria tem produto!', 'success' => false],422);
+
+            $categoria->delete();
+
             DB::commit();
             return response()->json(['message' => 'Deletado com sucesso!', 'success' => true]);
         } catch (Exception $e) {

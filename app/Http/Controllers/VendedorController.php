@@ -49,7 +49,12 @@ class VendedorController extends Controller
         try {
             DB::beginTransaction();
 
-            Vendedor::find($vendedor_id)->delete();
+            $vendedor = Vendedor::find($vendedor_id);
+
+            if($vendedor->saida()->count() > 0)
+                return response()->json(['message' => 'Vendedor já tem vendas concretizadas!', 'success' => false],422);
+
+            $vendedor->delete();
             DB::commit();
             return response()->json(['message' => 'Deletado com sucesso!', 'success' => true]);
         } catch (Exception $e) {

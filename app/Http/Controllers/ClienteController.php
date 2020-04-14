@@ -50,7 +50,13 @@ class ClienteController extends Controller
         try{
             DB::beginTransaction();
 
-            Cliente::find($cliente_id)->delete();
+            $cliente = Cliente::find($cliente_id);
+
+            if($cliente->saida()->count() > 0)
+                return response()->json(['message' => 'Cliente já tem compras concretizadas', 'success' => false],422);
+
+            $cliente->delete();
+
             DB::commit();
             return response()->json(['message' => 'Deletado com sucesso!', 'success' => true]);
         }catch (\Exception $e){

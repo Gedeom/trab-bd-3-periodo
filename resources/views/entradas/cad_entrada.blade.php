@@ -5,7 +5,6 @@
 
     <div class="container">
 
-        <!--Section: Products v.5-->
         <section class="section pb-3 wow fadeIn" data-wow-delay="0.3s">
             <!-- Grid column -->
             <div class="col-md-12">
@@ -275,7 +274,10 @@
     }
 
     function ClearDataEntrada() {
-        $("#pessoa").empty();
+        $('#produto').empty()
+        $('#fornecedor').empty()
+        $('#qnt').val('').change();
+        $('#dt_entrada').val('').change();
         id_entrada = 0;
     }
 

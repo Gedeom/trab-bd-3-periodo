@@ -34,6 +34,12 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Pessoa whereSexo($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Pessoa whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Cliente[] $cliente
+ * @property-read int|null $cliente_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Fornecedor[] $fornecedor
+ * @property-read int|null $fornecedor_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Vendedor[] $vendedor
+ * @property-read int|null $vendedor_count
  */
 class Pessoa extends Model
 {
@@ -41,5 +47,19 @@ class Pessoa extends Model
 
     public function logradouro(){
         return $this->belongsTo(Logradouro::class,'logradouro_id');
+    }
+
+    public function fornecedor(){
+        return $this->hasMany(Fornecedor::class,'pessoa_id');
+    }
+
+    public function cliente(){
+        return $this->hasMany(Cliente::class,'pessoa_id');
+
+    }
+
+    public function vendedor(){
+        return $this->hasMany(Vendedor::class,'pessoa_id');
+
     }
 }

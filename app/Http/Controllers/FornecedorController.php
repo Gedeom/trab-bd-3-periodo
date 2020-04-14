@@ -49,7 +49,13 @@ class FornecedorController extends Controller
         try {
             DB::beginTransaction();
 
-            Fornecedor::find($fornecedor_id)->delete();
+            $fornecedor = Fornecedor::find($fornecedor_id);
+
+            if($fornecedor->entrada()->count() > 0)
+                return response()->json(['message' => 'Fornecedor já tem entradas concretizadas!', 'success' => false],422);
+
+            $fornecedor->delete();
+
             DB::commit();
             return response()->json(['message' => 'Deletado com sucesso!', 'success' => true]);
         } catch (Exception $e) {

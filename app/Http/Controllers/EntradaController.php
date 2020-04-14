@@ -61,6 +61,8 @@ class EntradaController extends Controller
 
             if (bccomp((float)$saldo_temp,0.00,2) == -1)
                 return response()->json(['message'=>'Saldo do produto ficará negativo!','success'=>false],422);
+
+            $entrada->delete();
             DB::commit();
             return response()->json(['message' => 'Deletado com sucesso!', 'success' => true]);
         } catch (Exception $e) {

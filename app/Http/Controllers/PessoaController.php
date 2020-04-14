@@ -78,6 +78,7 @@ class PessoaController extends Controller
                 ->where('cidade.id', '=', $request->cidade)
                 ->where('cidade.uf', '=', $request->estado)
                 ->where('cep', '=', $request->cep)
+                ->where('logradouro.nome', '=', $request->logradouro)
                 ->select('logradouro.*')
                 ->first();
 
@@ -242,7 +243,7 @@ class PessoaController extends Controller
 
     public function Update($id, Request $request)
     {
-        $validacao = $this->Validacao(0, $request);
+        $validacao = $this->Validacao($id, $request);
 
         if ($validacao != '')
             return response()->json(['message' => $validacao, 'success' => false], 422);
@@ -256,6 +257,7 @@ class PessoaController extends Controller
                 ->where('cidade.id', '=', $request->cidade)
                 ->where('cidade.uf', '=', $request->estado)
                 ->where('cep', '=', $request->cep)
+                ->where('logradouro.nome', '=', $request->logradouro)
                 ->select('logradouro.*')
                 ->first();
 
@@ -292,17 +294,14 @@ class PessoaController extends Controller
 
         try {
             DB::beginTransaction();
-//
-//            if (Cliente::where('pessoa_id', '=', $pessoa_id)->first() != '')
-//                return response()->json(['message' => 'Pessoa já é um Cliente!', 'success' => false], 422);
-//
-//            if (Fornecedor::where('pessoa_id', '=', $pessoa_id)->first() != '')
-//                return response()->json(['message' => 'Pessoa já é um Fornecedor!', 'success' => false], 422);
-//
-//            if (Vendedor::where('pessoa_id', '=', $pessoa_id)->first() != '')
-//                return response()->json(['message' => 'Pessoa já é um Vendedor!', 'success' => false], 422);
 
+            $possiveis_relacionamento = ['fornecedor','cliente','vendedor'];
             $pessoa = Pessoa::find($pessoa_id);
+
+            foreach ($possiveis_relacionamento as $possivel_relacionamento)
+                if($pessoa->{$possivel_relacionamento}()->count() > 0)
+                    return response()->json(['message' => 'Essa pessoa é um: ' . $possivel_relacionamento, 'success' => false],422);
+
             $pessoa->logradouro_id = null;
             $pessoa->delete();
 

@@ -81,6 +81,7 @@
 {{--    <script src="{{asset('js/addons/material-select-view.js')}}"></script>--}}
 {{--    <script src="{{asset('js/addons/material-select-view-renderer.js')}}"></script>--}}
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <script src="{{asset('js/select2-pt-BR.js')}}"></script>
 
 
     {{-- Plugins DataTable js   --}}
@@ -126,6 +127,7 @@
 
 
     <script>
+        $.fn.select2.defaults.set("language", "pt-BR");
 
         function getTextWidth_Height(text, font, w_h = 'w') {
             // re-use canvas object for better performance
@@ -193,22 +195,6 @@
             return $(this).DataTable($.extend(true, default_object, options));
 
         };
-
-        function select2_search ($el, term) {
-            $el.select2('open');
-
-            // Get the search box within the dropdown or the selection
-            // Dropdown = single, Selection = multiple
-            var $search = $el.data('select2').dropdown.$search || $el.data('select2').selection.$search;
-            // This is undocumented and may change in the future
-
-            $search.val(term);
-            $search.trigger('keyup');
-        }
-
-        $(document).ready(function(){
-            $('.date_apply').customDatePicker();
-        });
 
         $.ajaxSetup({
             headers: {

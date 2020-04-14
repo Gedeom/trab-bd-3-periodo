@@ -5,7 +5,6 @@
 
     <div class="container">
 
-        <!--Section: Products v.5-->
         <section class="section pb-3 wow fadeIn" data-wow-delay="0.3s">
             <!-- Grid column -->
             <div class="col-md-12">
@@ -157,7 +156,6 @@
                 placeholder: "Estado",
                 minimumInputLength: 1,
                 ajax: {
-                    delay: 250,
                     type: 'POST',
                     dataType: "json",
                     url: '{{route('pessoa.get_estado')}}',
@@ -388,7 +386,8 @@
 
     function ClearDataPessoa() {
         $("#nome").val('').change();
-        $("#cpf_cnpj").val('').change();
+        $("#cpf_cnpj").val('');
+        $("#cpf_cnpj").change();
         $("#dt_nascimento").val('').change();
         $("#sexo").val('').change();
         $("#email").val('').change();
