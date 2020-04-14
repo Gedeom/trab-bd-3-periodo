@@ -4,9 +4,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+{{--    <link rel="stylesheet" href="{{asset('css/font-awesome.css')}}">--}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link href="{{asset('css/select2.min.css')}}" rel="stylesheet" />
 
     {{-- css    --}}
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
@@ -70,7 +71,7 @@
     <script src="{{asset('js/addons/multi-range.min.js')}}"></script>
     <script src="{{asset('js/addons/cards-extended.min.js')}}"></script>
     <script src="{{asset('js/addons/chat.min.js')}}"></script>
-    <script src="{{asset('js/addons/simple-charts.min.js')}}"></script>
+{{--    <script src="{{asset('js/addons/simple-charts.min.js')}}"></script>--}}
     <script src="{{asset('js/addons/timeline.min.js')}}"></script>
     <script src="{{asset('js/addons/steppers.min.js')}}"></script>
     <script src="{{asset('js/addons/waves.js')}}"></script>
@@ -80,7 +81,7 @@
 {{--    <script src="{{asset('js/addons/material-select.js')}}"></script>--}}
 {{--    <script src="{{asset('js/addons/material-select-view.js')}}"></script>--}}
 {{--    <script src="{{asset('js/addons/material-select-view-renderer.js')}}"></script>--}}
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <script src="{{asset('js/select2.min.js')}}"></script>
     <script src="{{asset('js/select2-pt-BR.js')}}"></script>
 
 
@@ -106,11 +107,11 @@
     <script src="{{asset('js/modules/accordion-extended.min.js')}}"></script>
     <script src="{{asset('js/modules/animations-extended.min.js')}}"></script>
     <script src="{{asset('js/modules/buttons.min.js')}}"></script>
-    <script src="{{asset('js/modules/character-counter.min.js')}}"></script>
+{{--    <script src="{{asset('js/modules/character-counter.min.js')}}"></script>--}}
     <script src="{{asset('js/modules/collapsible.min.js')}}"></script>
-    <script src="{{asset('js/modules/dropdown.min.js')}}"></script>
-    <script src="{{asset('js/modules/dropdown-searchable.min.js')}}"></script>
-    <script src="{{asset('js/modules/file-input.min.js')}}"></script>
+{{--    <script src="{{asset('js/modules/dropdown.min.js')}}"></script>--}}
+{{--    <script src="{{asset('js/modules/dropdown-searchable.min.js')}}"></script>--}}
+{{--    <script src="{{asset('js/modules/file-input.min.js')}}"></script>--}}
     <script src="{{asset('js/modules/forms-free.min.js')}}"></script>
     <script src="{{asset('js/modules/lightbox.min.js')}}"></script>
     <script src="{{asset('js/modules/megamenu.min.js')}}"></script>
@@ -120,7 +121,7 @@
     <script src="{{asset('js/modules/sidenav.min.js')}}"></script>
     <script src="{{asset('js/modules/smooth-scroll.min.js')}}"></script>
     <script src="{{asset('js/modules/sticky.min.js')}}"></script>
-    <script src="{{asset('js/modules/treeview.min.js')}}"></script>
+{{--    <script src="{{asset('js/modules/treeview.min.js')}}"></script>--}}
     <script src="{{asset('js/modules/wow.min.js')}}"></script>
 
 
