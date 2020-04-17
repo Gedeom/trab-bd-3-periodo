@@ -22,7 +22,7 @@ class CreateTableEntrada extends Migration
             $table->timestamps();
 
             $table->foreign('produto_id','entrada_x_produto')->references('id')->on('produto');
-            $table->foreign('fornecedor_id','entrada_x_fornecedor')->references('id')->on('produto');
+            $table->foreign('fornecedor_id','entrada_x_fornecedor')->references('id')->on('fornecedor');
         });
     }
 
