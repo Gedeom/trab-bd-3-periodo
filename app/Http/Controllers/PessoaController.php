@@ -115,7 +115,7 @@ class PessoaController extends Controller
             'cpf_cnpj' => 'required',
             'nome' => 'required',
             'dt_nascimento' => 'string|required',
-            'sexo' => strlen($request->cpf_cnpj) == 14 ? 'string' : 'string|required',
+            'sexo' => strlen($request->cpf_cnpj) == 14 ? '' : 'required',
             'email' => 'required',
             'celular' => 'required',
             'estado' => 'required',
